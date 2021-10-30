@@ -3,4 +3,12 @@ var url1 =  "https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}
 $("#Search").on("click",function() {
 var cityname = $("#cityname").val()
 console.log(cityname)
+currentForecast (cityname)
 })
+function currentForecast (cityname) {
+$.ajax({
+    url: `https://api.openweathermap.org/data/2.5/weather?q=${cityname}&appid=${apiKey}`,
+    success:function(apiData){
+    console.log (apiData)
+}})
+}
