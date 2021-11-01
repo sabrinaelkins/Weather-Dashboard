@@ -19,16 +19,21 @@
     <header class="bg-danger text-warning text-center">
         <h1>Weather Dashboard</h1>
     </header>
-    <main>
-        <aside>
+    <main class="container text-center">
+        <article class="row">
+
+        <aside class="col-md-12">
             <input type= "text" id="cityname"/>
             <button id= "Search" >Search</button>
 
         </aside>
-        <section>
+        <section class="col-md-12">
             <article class="card" style="width: 18rem;" id="currentForecast"></article>
-            <article id="5-dayForecast"></article>
+            <article class="d-flex flex-wrap space-between" id="5-dayForecast"></article>
         </section>
+
+        <section  id= "SearchForTheCity" class="col-md-12 d-flex flex-wrap text-center space-evenly"></section>
+        </article>
     </main>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

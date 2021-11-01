@@ -1,9 +1,11 @@
 var apiKey = "af182758c9239d5a0f1cab5a0418329b"
 var url1 = "https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}"
+var Storage = JSON.parse(localStorage.getItem("weatherAPI")) || []
 $("#Search").on("click", function () {
     var cityname = $("#cityname").val()
     console.log(cityname)
     currentForecast(cityname)
+    $("#cityname").val("")
 })
 function currentForecast(cityname) {
     $.ajax({
@@ -20,10 +22,32 @@ function currentForecast(cityname) {
             var lat = apiData.coord.lat
             var long = apiData.coord.lon
             dayForecast(lat, long)
+            if(Storage.indexOf(cityname) == -1){
+                Storage.push(cityname)
+                localStorage.setItem("weatherAPI",JSON.stringify(Storage))
+                displayCitySearch()
+            }
         }
     })
 }
+displayCitySearch()
 
+function displayCitySearch(){
+    var Storage = JSON.parse(localStorage.getItem("weatherAPI")) || []
+    var cityHTML = ""
+    $("#SearchForTheCity").html("<h1 class='bg-warning m-2 p-2'>Previous Search</h1>")
+    for (let i = 0 ; i < Storage.length;i++)    {
+        cityHTML += `<p><button class="previous btn btn-primary">${Storage[i]}</button></p>`
+    }
+    
+    $("#SearchForTheCity").append(cityHTML)
+}
+
+
+$("#SearchForTheCity").on("click",".previous",function(){
+    var city = $(this).text()
+    currentForecast(city)
+})
 function dayForecast(lat, lon) {
     $.ajax({
 
@@ -41,7 +65,7 @@ function dayForecast(lat, lon) {
             <h6>UVI: ${daily[i].uvi}</h6>
             </div>
             `
-            $("#5-dayForecast").html(htmlcode)
+                $("#5-dayForecast").html(htmlcode)
             }
 
             // $("#currentForecast").html(`
