@@ -30,10 +30,15 @@
 
 * THEN I am again presented with current and future conditions for that city
 
-## Website:
+## Websites:
 
--
--
+- file:///Users/sabrinaelkins/Desktop/projects/weekly-challenges/Weather-Dashboard/index.html
+
+- https://openweathermap.org/weather-conditions
+
+- https://getbootstrap.com/docs/5.1/components/card/
+
+- 
 
 ## Screenshot:
 
